@@ -12,7 +12,7 @@ namespace CrazyGoat\Tiny;
 use CrazyGoat\Core\Exceptions\RouteNotFound;
 use CrazyGoat\Core\Interfaces\RouteInterface;
 use CrazyGoat\Core\Interfaces\RouterInterface;
-use FastRoute\Dispatcher;
+use CrazyGoat\Router\Dispatcher;
 use Psr\Http\Message\ServerRequestInterface;
 
 class Router implements RouterInterface

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
+use CrazyGoat\Router\RouteCollector;
+use function CrazyGoat\Router\simpleDispatcher;
 use CrazyGoat\Tiny\{App, Router};
-use FastRoute\RouteCollector;
-use function FastRoute\simpleDispatcher;
 use Psr\Http\Message\{ResponseInterface, ServerRequestInterface};
 use Pimple\Container;
 
