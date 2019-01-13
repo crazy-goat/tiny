@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crazy-goat/core.git",
-                "reference": "385e5b03535e2a25d6bfc8d2d44522ff9861e642"
+                "reference": "7c6ca8d5a15e8a9019158126c2d733aeedffdad4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crazy-goat/core/zipball/385e5b03535e2a25d6bfc8d2d44522ff9861e642",
-                "reference": "385e5b03535e2a25d6bfc8d2d44522ff9861e642",
+                "url": "https://api.github.com/repos/crazy-goat/core/zipball/7c6ca8d5a15e8a9019158126c2d733aeedffdad4",
+                "reference": "7c6ca8d5a15e8a9019158126c2d733aeedffdad4",
                 "shasum": ""
             },
             "require": {
@@ -44,7 +44,7 @@
                 "source": "https://github.com/crazy-goat/core/tree/master",
                 "issues": "https://github.com/crazy-goat/core/issues"
             },
-            "time": "2019-01-13T14:02:13+00:00"
+            "time": "2019-01-13T17:24:03+00:00"
         },
         {
             "name": "nikic/fast-route",

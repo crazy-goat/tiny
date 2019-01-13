@@ -21,7 +21,7 @@ class Route implements RouteInterface
     /**
      * @var array
      */
-    private $arguments;
+    private $attributes;
 
     /**
      * @var array
@@ -36,7 +36,7 @@ class Route implements RouteInterface
     ) {
         $this->name = $name;
         $this->handler = $handler;
-        $this->arguments = $arguments;
+        $this->attributes = $arguments;
         $this->middlewares = $middlewares;
     }
 
@@ -55,8 +55,9 @@ class Route implements RouteInterface
         return $this->middlewares;
     }
 
-    public function getRouteArguments(): array
+
+    public function getAttributes(): array
     {
-        return $this->arguments;
+        return $this->attributes;
     }
 }
