@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "crazy-goat/core": "dev-master",
+        "crazy-goat/core": "^0.1",
         "pimple/pimple": "~3.0",
         "nyholm/psr7": "^1.0",
         "nyholm/psr7-server": "^0.3.0",
