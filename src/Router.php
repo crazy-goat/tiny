@@ -41,7 +41,7 @@ class Router implements RouterInterface
         switch ($routeInfo[0]) {
             case Dispatcher::FOUND:
                 return new Route(
-                    $routeInfo[1], null, $routeInfo[2]
+                    $routeInfo[1], null, $routeInfo[2], $routeInfo[3]
                 );
                 break;
             case Dispatcher::METHOD_NOT_ALLOWED:
