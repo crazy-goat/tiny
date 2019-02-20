@@ -12,7 +12,9 @@ namespace CrazyGoat\Tiny;
 use CrazyGoat\Core\Exceptions\RouteNotFound;
 use CrazyGoat\Core\Interfaces\RouteInterface;
 use CrazyGoat\Core\Interfaces\RouterInterface;
-use CrazyGoat\Router\Dispatcher;
+use CrazyGoat\Router\Exceptions\MethodNotAllowed as CrazyRouterMethodNotAllowed;
+use CrazyGoat\Router\Exceptions\RouteNotFound as CrazyRouterRouteNotFound;
+use CrazyGoat\Router\Interfaces\Dispatcher;
 use Psr\Http\Message\ServerRequestInterface;
 
 class Router implements RouterInterface
@@ -34,21 +36,21 @@ class Router implements RouterInterface
      */
     public function dispatch(ServerRequestInterface $request): RouteInterface
     {
-        $routeInfo = $this->dispatcher->dispatch(
-            $request->getMethod(), $request->getUri()->getPath()
-        );
+        try {
+            $routeInfo = $this->dispatcher->dispatch(
+                $request->getMethod(), $request->getUri()->getPath()
+            );
 
-        switch ($routeInfo[0]) {
-            case Dispatcher::FOUND:
-                return new Route(
-                    $routeInfo[1], null, $routeInfo[2], $routeInfo[3]
-                );
-                break;
-            case Dispatcher::METHOD_NOT_ALLOWED:
-            case Dispatcher::NOT_FOUND:
-            default:
-                throw new RouteNotFound('Route not found');
-                break;
+            return new Route(
+                $routeInfo->getHandler(),
+                null,
+                $routeInfo->getVariables(),
+                $routeInfo->getMiddlewareStack()
+            );
+        } catch (CrazyRouterRouteNotFound $exception) {
+            throw new RouteNotFound('Route not found');
+        } catch (CrazyRouterMethodNotAllowed $exception) {
+            throw new RouteNotFound('Route not found');
         }
     }
 }

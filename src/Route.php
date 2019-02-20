@@ -21,23 +21,23 @@ class Route implements RouteInterface
     /**
      * @var array
      */
-    private $attributes;
+    private $variables;
 
     /**
      * @var array
      */
-    private $middlewares;
+    private $middlewareStack;
 
     public function __construct(
         string $handler,
         ?string $name = null,
-        array $arguments = [],
-        array $middlewares = []
+        array $variables = [],
+        array $middlewareStack = []
     ) {
         $this->name = $name;
         $this->handler = $handler;
-        $this->attributes = $arguments;
-        $this->middlewares = $middlewares;
+        $this->variables = $variables;
+        $this->middlewareStack = $middlewareStack;
     }
 
     public function getName(): ?string
@@ -50,14 +50,14 @@ class Route implements RouteInterface
         return $this->handler;
     }
 
-    public function getMiddlewares(): array
+    public function getMiddlewareStack(): array
     {
-        return $this->middlewares;
+        return $this->middlewareStack;
     }
 
 
-    public function getAttributes(): array
+    public function getVariables(): array
     {
-        return $this->attributes;
+        return $this->variables;
     }
 }

@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace CrazyGoat\Tiny;
 
-use FastRoute\RouteCollector;
-use function FastRoute\simpleDispatcher;
+use CrazyGoat\Router\DispatcherFactory;
+use CrazyGoat\Router\RouteCollector;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7\Response;
 use Nyholm\Psr7Server\ServerRequestCreator;
@@ -56,24 +56,26 @@ class App extends \CrazyGoat\Core\App
         }
     }
 
-    private function initRouter()
+    private function initRouter(): void
     {
         if (!$this->container->has('router')) {
-            $dispatcher = simpleDispatcher(function(RouteCollector $r) {
-                return;
-            });
+            $dispatcher = DispatcherFactory::createFromClosure(
+                function (RouteCollector $r): void {
+                    return;
+                }
+            );
             $this->router = new Router($dispatcher);
         }
     }
 
-    private function initErrorHandler()
+    private function initErrorHandler(): void
     {
         if (!$this->container->has('errorHandler')) {
             $this->errorHandler = new SimpleErrorHandler();
         }
     }
 
-    private function initResponseRenderer()
+    private function initResponseRenderer(): void
     {
         if (!$this->container->has('responseRenderer')) {
             $this->renderer = new SimpleRenderer();
